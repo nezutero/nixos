@@ -125,6 +125,11 @@ in
       "*" = {
         AddKeysToAgent = "yes";
       };
+      "codeberg.org" = {
+        HostName = "codeberg.org";
+        User = "git";
+        IdentityFile = "~/.ssh/id_ed25519";
+      };
       "github.com" = {
         HostName = "github.com";
         User = "git";

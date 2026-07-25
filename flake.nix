@@ -13,6 +13,10 @@
       url = "github:0xc000022070/zen-browser-flake";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    sops-nix = {
+      url = "github:Mic92/sops-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
@@ -21,6 +25,7 @@
       nixpkgs,
       home-manager,
       zen-browser,
+      sops-nix,
       ...
     }@inputs:
     {
@@ -28,6 +33,8 @@
         system = "x86_64-linux";
         specialArgs = { inherit inputs; };
         modules = [
+          sops-nix.nixosModules.sops
+          ./modules/nextdns.nix
           ./configuration.nix
 
           home-manager.nixosModules.home-manager

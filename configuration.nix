@@ -21,10 +21,10 @@
   networking.hostName = "nixos";
   networking.networkmanager.enable = true;
   services.resolved.enable = false;
-  networking.nameservers = [
-    "extended.dns.mullvad.net"
-    "194.242.2.6"
-  ];
+  # networking.nameservers = [
+  #  "extended.dns.mullvad.net"
+  #  "194.242.2.6"
+  # ];
 
   # Time zone
   time.timeZone = "Europe/Paris";
@@ -117,6 +117,9 @@
     imv
     mpv
     git
+    android-tools
+    hakuneko
+    kcc
     gdb
     calibre
     zathura

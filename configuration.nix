@@ -117,6 +117,7 @@
     imv
     mpv
     git
+    dig
     android-tools
     hakuneko
     kcc

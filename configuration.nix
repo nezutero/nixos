@@ -197,10 +197,7 @@
   nix.optimise.dates = [ "weekly" ];
 
   # ── Background services ──────────────────────
-  hardware.bluetooth = {
-    enable = true;
-    powerOnBoot = false;
-  };
+  hardware.bluetooth.enable = false;
   services.blueman.enable = false;
   virtualisation.podman.enable = true;
   programs.gnupg.agent = {

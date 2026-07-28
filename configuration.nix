@@ -119,7 +119,6 @@
     git
     dig
     android-tools
-    hakuneko
     kcc
     gdb
     calibre

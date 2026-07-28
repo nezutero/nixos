@@ -146,7 +146,6 @@
     protonmail-bridge
     killall
     kanagawa-gtk-theme
-    tor-browser
   ];
 
   nix.settings.experimental-features = [

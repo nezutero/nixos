@@ -117,6 +117,7 @@
     imv
     mpv
     git
+    weechat
     dig
     android-tools
     kcc

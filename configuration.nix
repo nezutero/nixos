@@ -117,6 +117,7 @@
     imv
     mpv
     git
+    vesktop
     weechat
     dig
     android-tools

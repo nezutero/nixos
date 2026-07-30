@@ -121,7 +121,6 @@
     weechat
     dig
     android-tools
-    kcc
     gdb
     calibre
     zathura

@@ -142,8 +142,6 @@
     go
     unzip
     rmpc
-    thunderbird
-    protonmail-bridge
     killall
     kanagawa-gtk-theme
   ];

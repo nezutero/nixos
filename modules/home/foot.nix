@@ -15,7 +15,7 @@
       cursor = {
         style = "block";
       };
-      colors = {
+      colors-dark = {
         alpha = "0.8";
         background = "000000";
         foreground = "c5c9c5";

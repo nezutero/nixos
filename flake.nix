@@ -3,7 +3,6 @@
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
-
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -24,7 +23,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
-
   outputs =
     {
       self,
@@ -42,30 +40,23 @@
           specialArgs = { inherit inputs; };
           modules = [
             sops-nix.nixosModules.sops
-            ./modules/nextdns.nix
-            ./configuration.nix
-
+            ./hosts/default/configuration.nix
             home-manager.nixosModules.home-manager
             {
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
-              home-manager.users.nezutero = import ./home.nix;
+              home-manager.extraSpecialArgs = { inherit inputs; };
+              home-manager.users.nezutero = import ./hosts/default/home.nix;
             }
-
-            ({ pkgs, ... }: {
-              environment.systemPackages = [
-                zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.default
-              ];
-            })
           ];
         };
 
-        hetzner = nixpkgs.lib.nixosSystem {
+        server = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
           specialArgs = { inherit inputs; };
           modules = [
             disko.nixosModules.disko
-            ./hetzner-configuration.nix
+            ./hosts/server/configuration.nix
           ];
         };
       };

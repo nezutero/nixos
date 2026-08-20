@@ -1,6 +1,6 @@
 { config, pkgs, ... }:
 {
-  sops.defaultSopsFile = ../secrets/nextdns.yaml;
+  sops.defaultSopsFile = ../../secrets/nextdns.yaml;
   sops.age.keyFile = "/home/nezutero/.config/sops/age/keys.txt";
   sops.secrets.nextdns_id = { };
 

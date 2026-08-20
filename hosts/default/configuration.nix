@@ -11,6 +11,8 @@
 {
   imports = [
     ./hardware-configuration.nix
+    ./networking.nix
+    ../../profiles/desktop.nix
   ];
 
   boot.loader.systemd-boot.enable = true;

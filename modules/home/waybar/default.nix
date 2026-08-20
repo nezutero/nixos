@@ -3,7 +3,7 @@
 {
   programs.waybar = {
     enable = true;
-    
+
     settings = {
       mainBar = {
         position = "bottom";
@@ -24,14 +24,15 @@
           "temperature"
           "hyprland/language"
           "network"
+          # "bluetooth"
           "pulseaudio"
           "backlight"
           "battery"
         ];
 
         "hyprland/language" = {
-          format-en = "  EN";
-          format-fr = "  CA";
+          format-en = "  EN";
+          format-fr = "  CA";
         };
 
         clock = {
@@ -66,11 +67,15 @@
         temperature = {
           critical-threshold = 80;
           format = "{icon} {temperatureC}°C";
-          format-icons = [ "" ];
+          format-icons = [ "" ];
         };
 
         backlight = {
-          format-icons = [ "󰃞" "󰃟" "󰃠" ];
+          format-icons = [
+            "󰃞"
+            "󰃟"
+            "󰃠"
+          ];
           format = "{icon} {percent}%";
         };
 
@@ -80,23 +85,29 @@
             warning = 30;
             critical = 15;
           };
-          format = "{icon} {capacity}% {time} ";
-          format-full = "{icon} {capacity}% {time}";
-          format-charging = "{icon} {capacity}% {time}  ";
-          format-plugged = "{icon} {capacity}% {time}";
-          format-icons = [ "󰂎" "󰁻" "󰁾" "󰂀" "󰁹" ];
+          format = "{icon} {capacity}% {time} ";
+          format-full = "{icon} {capacity}% {time}";
+          format-charging = "{icon} {capacity}% {time}  ";
+          format-plugged = "{icon} {capacity}% {time}";
+          format-icons = [
+            "󰂎"
+            "󰁻"
+            "󰁾"
+            "󰂀"
+            "󰁹"
+          ];
           format-time = "{H}:{M}";
         };
 
         network = {
-          format-wifi = " ";
-          format-ethernet = "{ifname}: {ipaddr}/{cidr} ";
-          format-linked = "{ifname} (No IP) ";
+          format-wifi = " ";
+          format-ethernet = "{ifname}: {ipaddr}/{cidr} ";
+          format-linked = "{ifname} (No IP) ";
           format-disconnected = "󰖪 ";
           format-alt = "{ifname}: {ipaddr}/{cidr}";
           family = "ipv4";
-          tooltip-format-wifi = "-     {ifname} @ {essid}\n- IP: {ipaddr}\n- Strength: {signalStrength}%\n- Freq: {frequency}MHz\n-  {bandwidthUpBits}  {bandwidthDownBits}";
-          tooltip-format-ethernet = " {ifname}\nIP: {ipaddr}\n  {bandwidthUpBits}    {bandwidthDownBits}";
+          tooltip-format-wifi = "-     {ifname} @ {essid}\n- IP: {ipaddr}\n- Strength: {signalStrength}%\n- Freq: {frequency}MHz\n-  {bandwidthUpBits}  {bandwidthDownBits}";
+          tooltip-format-ethernet = " {ifname}\nIP: {ipaddr}\n  {bandwidthUpBits}    {bandwidthDownBits}";
         };
 
         disk = {
@@ -106,18 +117,34 @@
         };
 
         pulseaudio = {
+          # scroll-step = 1 # (%), can be a float
           format = "{volume}% {icon} {format_source}";
-          format-bluetooth = "{volume}% {icon} () {format_source}";
-          format-bluetooth-muted = "{icon} () {format_source}";
+          format-bluetooth = "{volume}% {icon} () {format_source}";
+          format-bluetooth-muted = "{icon} () {format_source}";
           format-muted = "{format_source}";
-          format-source = "{volume}% ";
-          format-source-muted = " ";
+          format-source = "{volume}% ";
+          format-source-muted = " ";
           format-icons = {
-            default = [ "" "" " " ];
+            default = [
+              ""
+              ""
+              " "
+            ];
           };
           on-click = "wpctl set-mute @DEFAULT_SOURCE@ toggle";
           on-click-right = "pavucontrol";
         };
+      };
+
+      bluetooth = {
+        format = "󰂯 {status}";
+        format-disabled = "";
+        format-off = "";
+        format-connected = "󰂱 {num_connections}";
+        tooltip-format = "{controller_alias}\t{controller_address}";
+        tooltip-format-connected = "{controller_alias}\t{controller_address}\n\n{device_enumerate}";
+        tooltip-format-enumerate-connected = "{device_alias}\t{device_address}";
+        on-click = "rofi-bluetooth";
       };
     };
 

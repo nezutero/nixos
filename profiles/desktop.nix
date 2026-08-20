@@ -6,7 +6,7 @@
     ../modules/nixos/fonts.nix
     ../modules/nixos/maintenance.nix
     ../modules/nixos/services.nix
-    ../modules/nixos/shell.nix
+    ../modules/nixos/nextdns.nix
   ];
 
   users.users."nezutero" = {

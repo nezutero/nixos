@@ -6,23 +6,23 @@
     
     settings = {
       global = {
-        font = "JetBrainsMono Nerd Font 12";
+        font = "JetBrainsMono Nerd Font 15";
         monitor = 0;
         follow = "none";
 
-        width = "(300, 450)";
-        height = "(50, 200)";
+        width = "(350, 550)";
+        height = "(75, 250)";
         origin = "top-right";
         offset = "(10, 50)";
         scale = 0;
         notification_limit = 10;
 
         progress_bar = true;
-        progress_bar_height = 10;
+        progress_bar_height = 12;
         progress_bar_frame_width = 1;
-        progress_bar_min_width = 250;
+        progress_bar_min_width = 300;
         progress_bar_max_width = 400;
-        progress_bar_corner_radius = 3;
+        progress_bar_corner_radius = 4;
         progress_bar_corners = "all";
 
         icon_corner_radius = 20;
@@ -66,7 +66,7 @@
         history_length = 20;
 
         always_run_script = true;
-        corner_radius = 20;
+        corner_radius = 23;
         corners = "all";
         ignore_dbusclose = false;
 

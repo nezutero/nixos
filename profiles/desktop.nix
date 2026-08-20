@@ -40,7 +40,6 @@
   };
 
   programs.hyprland.enable = true;
-  programs.niri.enable = true;
 
   services.greetd = {
     enable = true;
@@ -112,8 +111,6 @@
     imv
     mpv
     git
-    noctalia-shell
-    niri
     vesktop
     weechat
     dig

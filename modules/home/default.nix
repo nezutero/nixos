@@ -15,6 +15,7 @@
     ./dunst.nix
     ./zathura.nix
     ./fastfetch.nix
+    ./scripts.nix
 
     ./hyprland
     ./waybar

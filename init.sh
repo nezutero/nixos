@@ -2,8 +2,7 @@
 set -euo pipefail
 
 GIT_USER="nezutero"
-NIXOS_GIT="https://github.com/${GIT_USER}/nixos.git"
-NIXOS_DIR="$HOME/nixos"
+NIXOS_GIT="https://codeberg.org/${GIT_USER}/dotfiles.git"
 DOTFILES_DIR="$HOME/dotfiles"
 NVIM_DIR="$HOME/nvim"
 BACKUP_ETC_NIXOS="/etc/nixos.bak"

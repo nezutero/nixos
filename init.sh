@@ -2,33 +2,43 @@
 set -euo pipefail
 
 GIT_USER="nezutero"
-NIXOS_GIT="https://codeberg.org/${GIT_USER}/dotfiles.git"
+DOTFILES_GIT="https://codeberg.org/${GIT_USER}/dotfiles.git"
 DOTFILES_DIR="$HOME/dotfiles"
-NVIM_DIR="$HOME/nvim"
 BACKUP_ETC_NIXOS="/etc/nixos.bak"
 
-# 1. clone nixos config (HTTPS, nothing needed)
-if [ -d "$NIXOS_DIR" ]; then
-  echo "Skipping clone: $NIXOS_DIR exists"
+if [ -d "$DOTFILES_DIR/.git" ]; then
+  echo "Skipping clone: $DOTFILES_DIR already exists"
+elif [ -e "$DOTFILES_DIR" ]; then
+  echo "Error: $DOTFILES_DIR exists but is not a Git repository"
+  exit 1
 else
-  git clone "$NIXOS_GIT" "$NIXOS_DIR"
+  echo "Cloning dotfiles..."
+  git clone "$DOTFILES_GIT" "$DOTFILES_DIR"
 fi
 
-# backup /etc/nixos and symlink to ~/nixos
 if [ -L /etc/nixos ]; then
-  echo "/etc/nixos already a symlink"
+  CURRENT_TARGET="$(readlink /etc/nixos)"
+
+  if [ "$CURRENT_TARGET" = "$DOTFILES_DIR" ]; then
+    echo "/etc/nixos already points to $DOTFILES_DIR"
+  else
+    echo "/etc/nixos points to $CURRENT_TARGET"
+    sudo rm /etc/nixos
+    sudo ln -s "$DOTFILES_DIR" /etc/nixos
+  fi
+
 elif [ -e /etc/nixos ]; then
+  echo "Backing up existing /etc/nixos to $BACKUP_ETC_NIXOS"
   sudo mv /etc/nixos "$BACKUP_ETC_NIXOS"
-  sudo ln -s "$NIXOS_DIR" /etc/nixos
+  sudo ln -s "$DOTFILES_DIR" /etc/nixos
+
 else
-  sudo ln -s "$NIXOS_DIR" /etc/nixos
+  sudo ln -s "$DOTFILES_DIR" /etc/nixos
 fi
 
-# 2. rebuild (may generate SSH key, clone dotfiles/nvim via HTTPS, setup home-manager)
 echo "Running: sudo nixos-rebuild switch"
-sudo nixos-rebuild switch
+sudo nixos-rebuild switch --flake "$DOTFILES_DIR#default"
 
-# print SSH public key if it exists
 if [ -f "$HOME/.ssh/id_ed25519.pub" ]; then
   echo
   echo "=== SSH public key ==="
@@ -43,20 +53,14 @@ else
   echo "No SSH public key found at ~/.ssh/*.pub"
 fi
 
-# 3. pause for user to add key to GitHub
-read -p "Add the SSH key to GitHub, then press Enter to continue (Ctrl+C to abort)..."
+echo
+read -r -p "Add the SSH key to your Git hosting, then press Enter to continue (Ctrl+C to abort)..."
 
-# 4. switch remotes to SSH for pushing
+# switch dotfiles remote from HTTPS to SSH
 set -x
-if [ -d "$DOTFILES_DIR/.git" ]; then
-  git -C "$DOTFILES_DIR" remote set-url origin git@github.com:${GIT_USER}/dotfiles.git
-fi
-if [ -d "$NVIM_DIR/.git" ]; then
-  git -C "$NVIM_DIR" remote set-url origin git@github.com:${GIT_USER}/nvim.git
-fi
-if [ -d "$NIXOS_DIR/.git" ]; then
-  git -C "$NIXOS_DIR" remote set-url origin git@github.com:${GIT_USER}/nixos.git
-fi
+
+git -C "$DOTFILES_DIR" remote set-url origin "git@codeberg.org:${GIT_USER}/dotfiles.git"
+
 set +x
 
 echo "Done."

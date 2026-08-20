@@ -31,7 +31,6 @@
       c = "clear";
       gtp = "cd $HOME/projs && clear && ls -a";
       gtd = "cd $HOME/dotfiles";
-      gtc = "cd $HOME/nixos";
       gtn = "cd $HOME/notes";
       g = "git";
       gs = "git status";

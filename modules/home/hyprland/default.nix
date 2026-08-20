@@ -3,5 +3,5 @@
 {
   xdg.configFile."hypr".source =
     config.lib.file.mkOutOfStoreSymlink
-      "${config.home.homeDirectory}/nixos/modules/home/hyprland/config";
+      "${config.home.homeDirectory}/dotfiles/modules/home/hyprland/config";
 }

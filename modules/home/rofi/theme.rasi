@@ -10,18 +10,12 @@
     g-padding: 8px;
     hl-color: #c5c9c5;
     hlt-color: #c5c9c5;
-
     hlts-color: #151515;
     alt-color: "transparent";
     wbg-color: #000000CC;
     w-border: 1px solid;
     w-border-color: #151515;
     w-padding: 12px;
-}
-configuration {
-    modi: "drun";
-    show-icons: false;
-    display-drun: " ";
 }
 listview {
     columns: 1;

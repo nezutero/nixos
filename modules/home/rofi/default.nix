@@ -1,15 +1,16 @@
-{ config, pkgs, ... }:
+{ config, pkgs, lib, ... }:
 {
   programs.rofi = {
     enable = true;
-    location = "center";
-    terminal = "foot";
-
     extraConfig = {
       modi = "drun";
       show-icons = false;
       display-drun = " ";
     };
-    theme = ./theme.rasi;
   };
+
+  xdg.configFile."rofi/config.rasi".force = true;
+  xdg.configFile."rofi/config.rasi".text = ''
+    ${builtins.readFile ./theme.rasi}
+  '';
 }

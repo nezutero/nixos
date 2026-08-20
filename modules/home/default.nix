@@ -17,8 +17,10 @@
     ./fastfetch.nix
 
     ./hyprland
+    ./noctalia
+    ./niri
     ./waybar
-    ./rofi
     ./nvim
+    ./rofi
   ];
 }

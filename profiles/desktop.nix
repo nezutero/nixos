@@ -70,7 +70,6 @@
     lua-language-server
     nil
     wget
-    waybar
     rofi
     zbar
     libnotify

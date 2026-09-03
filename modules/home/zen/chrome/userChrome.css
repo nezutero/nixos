@@ -1,0 +1,11 @@
+.titlebar-buttonbox-container{ display:none }
+
+.tab-close-button.close-icon { display: none; }
+
+/* #TabsToolbar {
+    visibility: collapse;
+}
+
+#navigator-toolbox:hover #TabsToolbar {
+    visibility: visible;
+} */

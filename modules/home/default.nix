@@ -7,7 +7,6 @@
     ./mpd.nix
     ./ssh.nix
     ./xdg.nix
-    ./zen-browser.nix
     ./shell.nix
     ./foot.nix
     ./tmux.nix
@@ -21,5 +20,6 @@
     ./waybar
     ./nvim
     ./rofi
+    ./zen
   ];
 }

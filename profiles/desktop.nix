@@ -6,7 +6,7 @@
     ../modules/nixos/fonts.nix
     ../modules/nixos/maintenance.nix
     ../modules/nixos/services.nix
-    ../modules/nixos/nextdns.nix
+    #../modules/nixos/nextdns.nix
   ];
 
   users.users."nezutero" = {
@@ -110,6 +110,9 @@
     imv
     mpv
     git
+    jdk
+    thunderbird
+    protonmail-bridge
     vesktop
     weechat
     dig

@@ -71,6 +71,7 @@
     nil
     wget
     rofi
+    python314
     zbar
     libnotify
     wtype
@@ -110,11 +111,19 @@
     imv
     mpv
     git
+    cheese
     jdk
+    jdt-language-server
+    python3
+    python311Packages.python-lsp-server
+    python311Packages.pylint
+    python311Packages.black
+    python311Packages.pylsp-mypy
     thunderbird
     protonmail-bridge
     vesktop
     weechat
+    spotify
     dig
     android-tools
     gdb
@@ -139,7 +148,6 @@
     unzip
     rmpc
     killall
-    kanagawa-gtk-theme
   ];
 
   services.udisks2.enable = true;

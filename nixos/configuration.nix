@@ -3,9 +3,6 @@
 {
   imports = [
     ./hardware-configuration.nix
-    ./nix.nix
-    ./maintenance.nix
-    ./services.nix
     ./stylix.nix
   ];
 
@@ -27,11 +24,6 @@
       size = 17 * 1024;
       options = [ "pri=10" ];
     }
-  ];
-
-  nix.settings.experimental-features = [
-    "nix-command"
-    "flakes"
   ];
 
   # Network
@@ -103,9 +95,6 @@
   # Removable drives
   services.udisks2.enable = true;
   services.gvfs.enable = true; # helps GTK apps / file managers see removable media
-
-  hardware.bluetooth.enable = false;
-  services.blueman.enable = false;
 
   # Run prebuilt (non-Nix) binaries
   programs.nix-ld.enable = true;
